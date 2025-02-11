@@ -1,0 +1,7 @@
+{
+  "name": "hello_mundo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
