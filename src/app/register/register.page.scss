@@ -1,0 +1,45 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  strong {
+    font-size: 24px; /* Tamaño de fuente para el título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+  }
+  
+  #form-container {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho en pantallas grandes */
+  }
+  
+  .custom-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #a53896; /* Borde azul para los campos */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f0f8ff; /* Color de fondo claro */
+  }
+  
+  .error-message {
+    color: red; /* Color rojo para mensajes de error */
+    font-size: 12px; /* Tamaño de fuente para mensajes de error */
+    margin-bottom: 10px; /* Espacio debajo del mensaje de error */
+  }
+  
+  .custom-button {
+    margin-top: 10px;
+    width: 100%; /* Botón ocupa todo el ancho */
+    background-color: #100068; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .custom-button:disabled {
+    background-color: #ccc; /* Color de fondo para botón deshabilitado */
+  }

@@ -1,0 +1,19 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  img {
+    max-width: 80%; 
+    height: auto; 
+    margin-bottom: 20px; 
+  }
+  
+  ion-spinner {
+    font-size: 24px; 
+  }
+  //autor:Daniela Marbella Peña Rangel
