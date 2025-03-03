@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicModule, LoadingController, NavController } from '@ionic/angular'; // Asegúrate de importar todo lo necesario
+import { IonicModule, LoadingController, NavController } from '@ionic/angular'; 
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // IMPORTAR Router para redirigir
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],  // Asegúrate de que IonicModule esté aquí
+  imports: [IonicModule, CommonModule],  
 })
 export class HomePage {
   role: string = '';
@@ -16,7 +16,7 @@ export class HomePage {
   constructor(
     private navCtrl: NavController,
     private router: Router,
-    private loadingController: LoadingController // INYECTAR LoadingController
+    private loadingController: LoadingController 
   ) {}
 
   ngOnInit() {
@@ -34,25 +34,26 @@ export class HomePage {
       }
     }
   }
+  //Daniela Peña Rangel
 
   async goToProfile() {
     const loading = await this.loadingController.create({
       message: 'Cargando perfil...',
-      duration: 2000, // Duración de 2 segundos para mostrar el loading
+      duration: 2000, 
     });
-    await loading.present(); // Muestra el loading
+    await loading.present(); 
 
-    this.navCtrl.navigateForward('/profile'); // Navegar a la vista de perfil
+    this.navCtrl.navigateForward('/profile'); 
   }
 
   async goToUsers() {
     const loading = await this.loadingController.create({
       message: 'Cargando usuarios...',
-      duration: 2000, // Duración de 2 segundos para mostrar el loading
+      duration: 2000, 
     });
-    await loading.present(); // Muestra el loading
+    await loading.present(); 
 
-    this.navCtrl.navigateForward('/admin-users'); // Navegar a la vista de usuarios
+    this.navCtrl.navigateForward('/admin-users'); 
   }
 
   isAdmin() {
@@ -62,14 +63,14 @@ export class HomePage {
   async logout() {
     const loading = await this.loadingController.create({
       message: 'Cerrando sesión...',
-      duration: 2000, // Duración de 2 segundos para mostrar el loading
+      duration: 2000, 
     });
-    await loading.present(); // Muestra el loading
+    await loading.present(); 
 
-    // Eliminar el token de autenticación
+    
     localStorage.removeItem('token');
 
-    // Redirigir a la página de login después de cerrar sesión
+   
     this.router.navigate(['/login']);
   }
 }

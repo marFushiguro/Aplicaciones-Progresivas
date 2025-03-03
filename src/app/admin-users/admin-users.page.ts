@@ -29,6 +29,8 @@ export class AdminUsersPage {
         headers: { Authorization: `Bearer ${token}` },
       });
 
+      //Daniela Peña Rangel 
+
       this.userRole = userResponse.data.role;
 
       if (this.userRole === 'admin') {
@@ -78,7 +80,7 @@ export class AdminUsersPage {
   }
 
   goHome() {
-    this.router.navigate(['/home']);  // Redirige al Home
+    this.router.navigate(['/home']);  
   }
 
   goToEditUser(uid: string) {
@@ -107,3 +109,4 @@ export class AdminUsersPage {
     this.navCtrl.navigateForward('/create-user');
   }
 }
+//2021371074

@@ -1,36 +1,36 @@
-/* Estilo para el contenedor del formulario */
+
 .form-container {
     padding: 20px;
-    border: 2px solid #4c56af; /* Cambia el color del borde aquí */
-    border-radius: 10px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el formulario */
+    border: 2px solid #4c56af; 
+    border-radius: 10px;
+    background-color: #f9f9f9; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     margin: 10px;
   }
   
-  /* Estilo para los ion-item, agregando más espacio entre los campos */
+ 
   ion-item {
-    margin-bottom: 20px; /* Aumentamos el margen entre los campos */
+    margin-bottom: 20px; 
   }
   
-  /* Agregar espacio entre el label y el input */
+  /* marbe */
   ion-item ion-label {
-    margin-right: 10px; /* Espacio entre el label y el campo */
+    margin-right: 10px; 
   }
   
-  /* Asegurarse de que el valor dentro del input tenga espacio */
+  
   ion-input {
-    padding-left: 10px; /* Aumenta el espacio dentro del input (a la izquierda) */
+    padding-left: 10px; 
   }
   
-  /* Para pantallas más pequeñas */
+  
   @media (max-width: 576px) {
     .form-container {
-      padding: 15px; /* Menos relleno en pantallas pequeñas */
+      padding: 15px; 
     }
   
     ion-button {
-      font-size: 14px; /* Reducir el tamaño del botón en pantallas pequeñas */
+      font-size: 14px; 
     }
   }
   

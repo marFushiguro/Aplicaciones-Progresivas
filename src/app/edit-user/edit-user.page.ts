@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { IonicModule } from '@ionic/angular'; // Importa IonicModule
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { IonicModule } from '@ionic/angular'; 
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
   templateUrl: 'edit-user.page.html',
   styleUrls: ['edit-user.page.scss'],
-  standalone: true, // Asegúrate de que standalone esté en true
-  imports: [IonicModule, FormsModule], // Importa IonicModule y FormsModule
+  standalone: true, 
+  imports: [IonicModule, FormsModule], 
 })
 export class EditUserPage {
   user: any = {
@@ -18,6 +18,8 @@ export class EditUserPage {
     username: '',
   };
   uid: string = '';
+
+  //Daniela Peña Rangel
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 

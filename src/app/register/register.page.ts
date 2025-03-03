@@ -7,12 +7,12 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-register',
-    templateUrl: 'register.page.html',  // Cambié esto a 'register.page.html'
+    templateUrl: 'register.page.html',  
     styleUrls: ['register.page.scss'],
     standalone: true,
     imports: [IonicModule, CommonModule, FormsModule]
 })
-export class RegisterPage {  // Cambié esto a 'RegisterPage' para coincidir con el selector
+export class RegisterPage {  
     registerData = { username: '', email: '', password: '', confirmPassword: '', role: 'user' };
 
     constructor(
@@ -43,7 +43,7 @@ export class RegisterPage {  // Cambié esto a 'RegisterPage' para coincidir con
 
         this.authService.register(this.registerData).then(() => {
             loading.dismiss();
-            this.router.navigate(['/login']); // Redirige al login después de registrar
+            this.router.navigate(['/login']); 
         }).catch(async error => {
             loading.dismiss();
             const alert = await this.alertController.create({

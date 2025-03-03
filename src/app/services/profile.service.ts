@@ -5,9 +5,9 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:3000/api'; // URL de tu backend
+  private apiUrl = 'http://localhost:3000/api'; 
 
-  // Obtener el perfil del usuario
+  //oobtener el perfil del usuario
   async getProfile(token: string) {
     try {
       const response = await axios.get(`${this.apiUrl}/auth/profile`, {
@@ -21,13 +21,13 @@ export class ProfileService {
     }
   }
 
- // Actualizar el perfil del usuario
+ 
     async updateProfile(token: string, userId: string, updateData: any) {
-        console.log('➡️  updateProfile() - userId recibido:', userId); // 👈 ¡AÑADIDO console.log() AQUÍ!
-        console.log('➡️  updateProfile() - API URL:', `${this.apiUrl}/users/${userId}`); // 👈 ¡AÑADIDO console.log() AQUÍ!
+        console.log('➡️  updateProfile() - userId recibido:', userId); 
+        console.log('➡️  updateProfile() - API URL:', `${this.apiUrl}/users/${userId}`); 
 
         try {
-            const response = await axios.put(`${this.apiUrl}/users/${userId}`, updateData, { // ✅ ¡CORREGIDO! COMILLAS INVERTIDAS Y LLAVES CORRECTAS
+            const response = await axios.put(`${this.apiUrl}/users/${userId}`, updateData, { 
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -37,8 +37,9 @@ export class ProfileService {
             throw error;
         }
     }
+    //Daniela Peña Rangel
 
-  // Eliminar el perfil del usuario
+  
   async deleteProfile(token: string, userId: string) {
     try {
       const response = await axios.delete(`${this.apiUrl}/users/${userId}`, {

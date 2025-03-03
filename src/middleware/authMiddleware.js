@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const { usersCollection } = require('../../config/firebase');
 
 
-// Middleware para verificar el token de autenticación
+//verificar el token de autenticación
+//Daniela Peña Rangel 
 const verifyToken = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
 
@@ -35,11 +36,11 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-// Middleware para verificar permisos específicos de usuario
+//verificar permisos específicos de usuario
 const verifyPermission = (permission) => {
   return (req, res, next) => {
-    console.log('Usuario:', req.user); // Depuración
-    console.log('Permisos del usuario:', req.user.permissions); // Depuración
+    console.log('Usuario:', req.user); 
+    console.log('Permisos del usuario:', req.user.permissions); 
     if (!req.user || !req.user.permissions || !req.user.permissions.includes(permission)) {
       return res.status(403).json({ message: 'Acceso denegado: permiso insuficiente' });
     }

@@ -4,61 +4,61 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Router } from '@angular/router'; // Importa Router para redirecciones
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-profile',
   templateUrl: 'profile.page.html',
   styleUrls: ['profile.page.scss'],
-  standalone: true, // Habilitar modo standalone
-  imports: [IonicModule, CommonModule, FormsModule], // Importar módulos necesarios
+  standalone: true, 
+  imports: [IonicModule, CommonModule, FormsModule], 
 })
 export class ProfilePage implements OnInit {
-  userProfile: any = {}; // Objeto para almacenar los datos del perfil
-  token: string | null = null; // Token del usuario
-  isAdmin: boolean = false; // Variable para verificar si el usuario es administrador
+  userProfile: any = {}; //objnpara almacenar los datos del perfil
+  token: string | null = null;
+  isAdmin: boolean = false; //variable para verificar si el usuario es administrador
 
   constructor(
     private profileService: ProfileService,
     private navCtrl: NavController,
-    private router: Router // Inyecta Router para redirecciones
+    private router: Router 
   ) {}
 
   async ngOnInit() {
-    await this.loadUserProfile(); // Cargar el perfil del usuario al iniciar la página
+    await this.loadUserProfile(); 
   }
 
-  // Cargar el perfil del usuario
+  //Daniela Peña Rangel 
   async loadUserProfile() {
-    this.token = localStorage.getItem('token'); // Obtener el token del localStorage
+    this.token = localStorage.getItem('token'); 
 
     if (!this.token) {
         console.error('❌ Token no encontrado');
-        this.router.navigate(['/login']); // Redirigir al login si no hay token
+        this.router.navigate(['/login']); 
         return;
     }
 
     try {
-        const profile: any = await this.profileService.getProfile(this.token); // Obtener el perfil
+        const profile: any = await this.profileService.getProfile(this.token); 
         if (!profile) {
             console.error('❌ No se encontraron datos del perfil');
             return;
         }
 
-        this.userProfile = profile; // Asignar los datos del perfil
-        this.isAdmin = this.userProfile.role === 'admin'; // Verificar si el usuario es administrador
+        this.userProfile = profile; 
+        this.isAdmin = this.userProfile.role === 'admin'; 
 
-        console.log('➡️ loadUserProfile() - Loaded Profile:', this.userProfile); // 👈👈👈 ¡AHORA  ESTÁ  *AL  FINAL*!
+        console.log('➡️ loadUserProfile() - Loaded Profile:', this.userProfile); 
 
     } catch (error) {
         console.error('❌ Error al obtener perfil:', error);
     }
 }
 
- // Editar el perfil del usuario
+ 
  async editProfile() {
  
-  console.log('➡️  editProfile() - userProfile:', this.userProfile); // 👈  ¡AÑADIDO console.log() AQUÍ!
+  console.log('➡️  editProfile() - userProfile:', this.userProfile); // 👈  
 
   if (!this.userProfile || !this.token) return;
 
@@ -91,7 +91,7 @@ export class ProfilePage implements OnInit {
 
       await this.profileService.deleteProfile(this.token, this.userProfile.uid);
       alert('✅ Usuario eliminado correctamente');
-      this.router.navigate(['/home']); // Redirigir al Home tras la eliminación
+      this.router.navigate(['/home']); 
     } catch (error) {
       console.error('❌ Error al eliminar usuario:', error);
     }

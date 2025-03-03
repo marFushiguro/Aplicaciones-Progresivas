@@ -10,32 +10,33 @@ import { FormsModule } from '@angular/forms';
     templateUrl: 'login.page.html',
     styleUrls: ['login.page.scss'],
     standalone: true,
-    imports: [IonicModule, CommonModule, FormsModule] // Asegúrate de que estos módulos estén aquí
+    imports: [IonicModule, CommonModule, FormsModule] 
 })
 export class LoginPage {
     loginData = { email: '', password: '' };
+    //Daniela Peña Rangel 
 
     constructor(
         private authService: AuthService, 
         private router: Router,
         private alertController: AlertController,
-        private loadingController: LoadingController // INYECTAR LoadingController
+        private loadingController: LoadingController 
     ) {}
 
     async onLogin() {
         const loading = await this.loadingController.create({
             message: 'Iniciando sesión...',
-            duration: 3000 // Duración de 3 segundos para mostrar el loading
+            duration: 3000 
         });
 
-        await loading.present(); // Muestra el loading
+        await loading.present(); 
 
         this.authService.login(this.loginData).then(() => {
-            loading.dismiss(); // Oculta el loading después de iniciar sesión correctamente
+            loading.dismiss(); 
             this.router.navigate(['/home']);
         }).catch(async error => {
             console.error('Login error:', error);
-            loading.dismiss(); // Si hay un error, también se debe ocultar el loading
+            loading.dismiss(); 
             let message = 'Ocurrió un error. Intenta de nuevo.';
             
             if (error.message.includes('contraseña incorrecta')) {

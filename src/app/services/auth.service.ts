@@ -13,7 +13,7 @@ export class AuthService {
     try {
       const response = await this.http.post<{ token: string }>(`${this.apiUrl}/login`, data).toPromise();
       
-      if (response?.token) { // ✅ Verifica si el token existe antes de guardarlo
+      if (response?.token) { //se verifica si el token existe antes de guardarlo
         localStorage.setItem('token', response.token);
         return response;
       } else {
@@ -24,6 +24,7 @@ export class AuthService {
       throw error;
     }
   }
+  //Daniela Peña Rangel 
 
   async register(data: { username: string; email: string; password: string; role: string }) {
     try {
