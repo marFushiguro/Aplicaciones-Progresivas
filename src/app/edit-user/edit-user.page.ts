@@ -63,4 +63,8 @@ export class EditUserPage {
       console.error('Error al actualizar usuario:', error.response ? error.response.data : error.message);
     }
   }
+
+  goHome() {
+    this.router.navigate(['/home']);  // Redirige al Home
+  }
 }

@@ -15,7 +15,7 @@ export class AdminUsersPage {
   users: any[] = [];
   userRole: string = '';
 
-  constructor(private navCtrl: NavController, private router: Router, private cdr: ChangeDetectorRef) { } // 👈 AÑADE private cdr: ChangeDetectorRef  AL  CONSTRUCTOR
+  constructor(private navCtrl: NavController, private router: Router, private cdr: ChangeDetectorRef) {}
 
   async ionViewWillEnter() {
     const token = localStorage.getItem('token');
@@ -76,6 +76,11 @@ export class AdminUsersPage {
       this.users = [];
     }
   }
+
+  goHome() {
+    this.router.navigate(['/home']);  // Redirige al Home
+  }
+
   goToEditUser(uid: string) {
     this.navCtrl.navigateForward(`/edit-user/${uid}`);
   }

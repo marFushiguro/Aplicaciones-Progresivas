@@ -1,12 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Usuarios</ion-title>
+    <!-- Botón de Home -->
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">Home</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let user of users">  
+    <ion-item *ngFor="let user of users">
       <ion-label>
         <h2>{{ user.username }}</h2>
         <p>{{ user.email }} ({{ user.role }})</p>

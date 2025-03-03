@@ -1,47 +1,61 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { IonicModule, AlertController, LoadingController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: 'register.page.html',
-  styleUrls: ['register.page.scss'],
-  standalone: true,
-  imports: [IonicModule, FormsModule, CommonModule]
+    selector: 'app-register',
+    templateUrl: 'register.page.html',  // Cambié esto a 'register.page.html'
+    styleUrls: ['register.page.scss'],
+    standalone: true,
+    imports: [IonicModule, CommonModule, FormsModule]
 })
-export class RegisterPage {
-  registerData = { username: '', email: '', password: '', confirmPassword: '', role: 'user' };
-  errorMessage: string = '';
+export class RegisterPage {  // Cambié esto a 'RegisterPage' para coincidir con el selector
+    registerData = { username: '', email: '', password: '', confirmPassword: '', role: 'user' };
 
-  constructor(private authService: AuthService, private router: Router) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private alertController: AlertController,
+        private loadingController: LoadingController
+    ) {}
 
-  async onRegister() {
-    if (this.registerData.password !== this.registerData.confirmPassword) {
-      this.errorMessage = '❌ Las contraseñas no coinciden';
-      return;
+    async onRegister() {
+        const loading = await this.loadingController.create({
+            message: 'Registrando...',
+            duration: 3000
+        });
+
+        await loading.present();
+
+        if (this.registerData.password !== this.registerData.confirmPassword) {
+            loading.dismiss();
+            const alert = await this.alertController.create({
+                header: 'Error',
+                message: 'Las contraseñas no coinciden.',
+                buttons: ['OK']
+            });
+            await alert.present();
+            return;
+        }
+
+        this.authService.register(this.registerData).then(() => {
+            loading.dismiss();
+            this.router.navigate(['/login']); // Redirige al login después de registrar
+        }).catch(async error => {
+            loading.dismiss();
+            const alert = await this.alertController.create({
+                header: 'Error de registro',
+                message: 'Hubo un problema al registrar la cuenta. Intenta de nuevo.',
+                buttons: ['OK']
+            });
+            await alert.present();
+        });
     }
 
-    try {
-      await this.authService.register({
-        username: this.registerData.username,
-        email: this.registerData.email,
-        password: this.registerData.password,
-        role: this.registerData.role
-      });
-
-      console.log('✅ Registro exitoso');
-      this.router.navigate(['/login']); // Redirige a login después del registro
-    } catch (error: any) {
-      console.error('❌ Error en el registro:', error);
-      this.errorMessage = 'Error al registrar usuario: ' + (error.message || 'Intenta de nuevo');
+    irAPaginaLogin() {
+        this.router.navigate(['/login']);
     }
-  }
-
-  irAPaginaLogin() {
-    this.router.navigate(['/login']); // Navega a la página de login PROGRAMÁTICAMENTE
-}
 }

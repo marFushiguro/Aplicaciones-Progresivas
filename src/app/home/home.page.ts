@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicModule } from '@ionic/angular';
+import { IonicModule, LoadingController, NavController } from '@ionic/angular'; // Asegúrate de importar todo lo necesario
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // IMPORTAR Router para redirigir
 
@@ -8,12 +8,16 @@ import { Router } from '@angular/router'; // IMPORTAR Router para redirigir
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule],  // Asegúrate de que IonicModule esté aquí
 })
 export class HomePage {
   role: string = '';
 
-  constructor(private navCtrl: NavController, private router: Router) {}
+  constructor(
+    private navCtrl: NavController,
+    private router: Router,
+    private loadingController: LoadingController // INYECTAR LoadingController
+  ) {}
 
   ngOnInit() {
     this.getRoleFromToken();
@@ -31,24 +35,41 @@ export class HomePage {
     }
   }
 
-  goToProfile() {
-    this.navCtrl.navigateForward('/profile');
+  async goToProfile() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando perfil...',
+      duration: 2000, // Duración de 2 segundos para mostrar el loading
+    });
+    await loading.present(); // Muestra el loading
+
+    this.navCtrl.navigateForward('/profile'); // Navegar a la vista de perfil
   }
 
-  goToUsers() {
-    this.navCtrl.navigateForward('/admin-users'); 
+  async goToUsers() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando usuarios...',
+      duration: 2000, // Duración de 2 segundos para mostrar el loading
+    });
+    await loading.present(); // Muestra el loading
+
+    this.navCtrl.navigateForward('/admin-users'); // Navegar a la vista de usuarios
   }
 
   isAdmin() {
     return this.role === 'admin';
   }
 
-  // Función para hacer logout y redirigir a la vista de login
-  logout() {
-    // Eliminar el token de autenticación (o hacer la lógica que corresponda)
+  async logout() {
+    const loading = await this.loadingController.create({
+      message: 'Cerrando sesión...',
+      duration: 2000, // Duración de 2 segundos para mostrar el loading
+    });
+    await loading.present(); // Muestra el loading
+
+    // Eliminar el token de autenticación
     localStorage.removeItem('token');
-    
-    // Redirigir a la página de login
+
+    // Redirigir a la página de login después de cerrar sesión
     this.router.navigate(['/login']);
   }
 }
