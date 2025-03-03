@@ -1,0 +1,47 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.custom-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.custom-input {
+  --border-radius: 10px;
+  --border-width: 2px;
+  --border-color: #367af1;
+  color: black;
+}
+
+.custom-input ion-label {
+  color: black;
+}
+
+.signup-link, .login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup-link a, .login-link a {
+  color: #3880ff;
+  text-decoration: none;
+  font-weight: bold;
+}

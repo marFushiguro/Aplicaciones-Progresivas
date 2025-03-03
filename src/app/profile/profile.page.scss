@@ -1,0 +1,55 @@
+/* Agregar color de fondo y borde a los card de Editar Perfil y Perfil Actual */
+ion-card {
+    --background: #f0f0f0; /* Fondo gris claro */
+    --border-radius: 10px; /* Bordes redondeados */
+    --border-width: 2px;
+    --border-color: #6488c5; /* Color de borde azul */
+    margin-bottom: 20px; /* Separar los cards */
+  }
+  
+  /* Para personalizar el contenido dentro de los ion-card */
+  ion-card-header {
+    background-color: #98beff; /* Color de fondo del encabezado */
+    color: white; /* Color de texto blanco en el encabezado */
+    border-top-left-radius: 10px; /* Redondear la parte superior */
+    border-top-right-radius: 10px;
+  }
+  
+  ion-card-content {
+    padding: 15px; /* Un poco de espacio dentro del contenido */
+  }
+  
+  /* Asegurarse de que los inputs tengan borde redondeado */
+  ion-input {
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    margin-bottom: 15px; /* Separación entre inputs */
+  }
+  
+  /* Estilo de los botones */
+  ion-button {
+    margin-top: 10px;
+  }
+  
+  /* Contenedor del logo */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo-container img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .signup-link, .login-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .signup-link a, .login-link a {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

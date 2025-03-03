@@ -1,0 +1,20 @@
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-container img {
+  width: 100px;
+  height: auto;
+}
+
+.signup-link, .login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup-link a, .login-link a {
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  cursor: pointer;
+}

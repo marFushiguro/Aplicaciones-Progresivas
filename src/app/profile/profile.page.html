@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card *ngIf="userProfile">
+          <ion-card-header>
+            <ion-card-title>Editar Perfil</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Nombre de usuario</ion-label>
+                <ion-input type="text" [(ngModel)]="userProfile.username"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" [(ngModel)]="userProfile.email"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="userProfile">
+          <ion-card-header>
+            <ion-card-title>Perfil Actual</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p><strong>Usuario:</strong> {{ userProfile.username }}</p>
+            <p><strong>Email:</strong> {{ userProfile.email }}</p>
+            <p><strong>Rol:</strong> {{ userProfile.role }}</p>
+            <p><strong>Permisos:</strong> {{ userProfile.permissions?.join(', ') || 'Ninguno' }}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-button expand="full" (click)="editProfile()">Guardar Cambios</ion-button>
+        <ion-button *ngIf="isAdmin" expand="full" color="danger" (click)="deleteProfile()">
+          Eliminar Usuario
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

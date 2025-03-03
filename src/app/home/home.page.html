@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido</ion-title>
+    <!-- Botón de salir en la parte superior derecha -->
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Mi Perfil</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="full" (click)="goToProfile()">Ver Perfil</ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="isAdmin()">
+          <ion-card-header>
+            <ion-card-title>Usuarios</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="full" (click)="goToUsers()">Ver Todos los Usuarios</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

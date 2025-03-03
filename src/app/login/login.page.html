@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="content">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+  
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <ion-item class="custom-input">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="loginData.email" name="email" required></ion-input>
+      </ion-item>
+  
+      <ion-item class="custom-input">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="loginData.password" name="password" required></ion-input>
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+  
+      <div class="signup-link">
+        <p>No tienes una cuenta? <a (click)="irAPaginaRegistro()">Regístrate aquí</a></p>
+      </div>
+    </form>
+  </ion-content>
+  

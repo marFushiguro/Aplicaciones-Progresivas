@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="content">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+  
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+      <ion-item class="custom-input">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" [(ngModel)]="registerData.username" name="username" required></ion-input>
+      </ion-item>
+  
+      <ion-item class="custom-input">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="registerData.email" name="email" required></ion-input>
+      </ion-item>
+  
+      <ion-item class="custom-input">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="registerData.password" name="password" required></ion-input>
+      </ion-item>
+  
+      <ion-item class="custom-input">
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="registerData.confirmPassword" name="confirmPassword" required></ion-input>
+      </ion-item>
+  
+      <ion-item class="custom-input">
+        <ion-label position="floating">Rol</ion-label>
+        <ion-select [(ngModel)]="registerData.role" name="role" required>
+          <ion-select-option value="user">Usuario</ion-select-option>
+          <ion-select-option value="admin">Administrador</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" [disabled]="!registerForm.valid || registerData.password !== registerData.confirmPassword">
+        Registrar
+      </ion-button>
+  
+      <div class="login-link">
+        <p>¿Ya tienes una cuenta? <a (click)="irAPaginaLogin()">Inicia sesión</a></p>
+      </div>
+    </form>
+  </ion-content>
+  
