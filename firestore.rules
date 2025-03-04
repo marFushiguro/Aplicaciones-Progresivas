@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 🔥 Un usuario autenticado puede leer y actualizar su propio perfil
+    match /users/{uid} {
+      allow read, update: if request.auth != null && request.auth.uid == uid;
+
+      // 🔥 Solo un administrador puede eliminar usuarios
+      allow delete: if request.auth.token.role == 'admin';
+    }
+
+    // 🔥 Solo admin puede escribir o eliminar otros documentos
+    match /{document=**} {
+      allow write, delete: if request.auth.token.role == 'admin';
+    }
+  }
+}
+

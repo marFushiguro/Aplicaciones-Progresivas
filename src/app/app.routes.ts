@@ -10,7 +10,7 @@ import { EditUserPage } from './edit-user/edit-user.page';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomePage },
   { path: 'login', component: LoginPage },
   { path: 'register', component: RegisterPage },
